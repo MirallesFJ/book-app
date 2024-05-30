@@ -1,0 +1,38 @@
+<div class="flex flex-col justify-center items-center">
+  <table class="w-full border border-gray-300">
+    <thead>
+      <tr class="bg-gray-200">
+        <th class="px-4 py-2">ISBN</th>
+        <th class="px-4 py-2">Title</th>
+        <th class="px-4 py-2">Author</th>
+        <th class="px-4 py-2">Genre</th>
+        <th class="px-4 py-2">Status</th>
+        <th class="px-4 py-2">Stars</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (book of books; track book.isbn; let index = $index){
+      <tr
+        [ngClass]="{
+          'hover:bg-gray-100': true,
+          'bg-white': index % 2 === 0,
+          'bg-gray-50': index % 2 !== 0
+        }"
+      >
+        <td class="px-4 py-2">{{ book.isbn }}</td>
+        <td class="px-4 py-2">{{ book.title }}</td>
+        <td class="px-4 py-2">{{ book.author }}</td>
+        <td class="px-4 py-2">{{ book.genre }}</td>
+        <td class="px-4 py-2">{{ book.status }}</td>
+        <td class="px-4 py-2">{{ renderStars(book.rating) }}</td>
+      </tr>
+      }
+    </tbody>
+  </table>
+  <button
+    class="bg-blue-500 text-white font-bold rounded hover:bg-blue-600 text-center px-4 py-2 mt-5"
+    (click)="addBook()"
+  >
+    Add
+  </button>
+</div>

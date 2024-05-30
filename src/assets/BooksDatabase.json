@@ -1,0 +1,26 @@
+[
+  {
+    "title": "Roma soy yo",
+    "author": "Santiago Posteguillo",
+    "genre": "Historical Novel",
+    "status": "Completed",
+    "rating": 5,
+    "isbn": "15637897"
+  },
+  {
+    "title": "The Bitcoin Standard",
+    "author": "Saifedean Ammous",
+    "genre": "Economics",
+    "status": "Completed",
+    "rating": 4,
+    "isbn": "36383735"
+  },
+  {
+    "title": "Read Write Own",
+    "author": "Chris Dixon",
+    "genre": "Tech",
+    "status": "In Progress",
+    "rating": 3,
+    "isbn": "97908754"
+  }
+]
