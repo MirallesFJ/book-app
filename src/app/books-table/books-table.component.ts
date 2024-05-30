@@ -15,6 +15,14 @@ export class BooksTableComponent {
     return this.booksService.getBooks();
   }
 
+  deleteBook(bookId: string) {
+    this.booksService.deleteBook(bookId);
+  }
+
+  editBook(bookId: string, updatedBook: any) {
+    this.booksService.editBook(bookId, updatedBook);
+  }
+
   renderStars(rating: number) {
     let stars = '';
     for (let i = 0; i < 5; i++) {

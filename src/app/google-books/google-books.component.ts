@@ -13,7 +13,7 @@ import { BooksService } from '../books.service';
 export class GoogleBooksComponent {
   searchTerm = '';
   data: any;
-  key = '';
+  key = 'AIzaSyAFeoKJviwitXqRmNO7bAR4zNX49xB_CIU';
 
   constructor(private http: HttpClient, private booksService: BooksService) {}
 

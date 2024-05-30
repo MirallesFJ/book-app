@@ -12,6 +12,23 @@ export class BooksService {
   }
 
   addBook(book: any) {
-    this.books.push(book);
+    const doesBookExist = this.books.some(
+      (existingBook) => existingBook.id === book.id
+    );
+
+    if (!doesBookExist) {
+      this.books.push(book);
+    }
+  }
+
+  deleteBook(bookId: string) {
+    this.books = this.books.filter((book) => book.id !== bookId);
+  }
+
+  editBook(bookId: string, updatedBook: any) {
+    const bookIndex = this.books.findIndex((book) => book.id === bookId);
+    if (bookIndex !== -1) {
+      this.books[bookIndex] = { ...this.books[bookIndex], ...updatedBook };
+    }
   }
 }

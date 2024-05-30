@@ -8,6 +8,7 @@
         <th class="px-4 py-2">Status</th>
         <th class="px-4 py-2">Pages</th>
         <th class="px-4 py-2">Stars</th>
+        <th class="px-4 py-2">Actions</th>
       </tr>
     </thead>
     <tbody>
@@ -19,12 +20,25 @@
           'bg-gray-50': index % 2 !== 0
         }"
       >
-        <td class="px-4 py-2">{{ book.title }}</td>
-        <td class="px-4 py-2">{{ book.author }}</td>
-        <td class="px-4 py-2">{{ book.genre }}</td>
-        <td class="px-4 py-2">{{ book.status }}</td>
-        <td class="px-4 py-2">{{ book.pages }}</td>
-        <td class="px-4 py-2">{{ renderStars(book.rating) }}</td>
+        <td class="px-4 py-2 text-center">{{ book.title }}</td>
+        <td class="px-4 py-2 text-center">{{ book.author }}</td>
+        <td class="px-4 py-2 text-center">{{ book.genre }}</td>
+        <td class="px-4 py-2 text-center">{{ book.status }}</td>
+        <td class="px-4 py-2 text-center">{{ book.pages }}</td>
+        <td class="px-4 py-2 text-center">{{ renderStars(book.rating) }}</td>
+        <td class="px-4 py-2 text-center">
+          <button
+            class="bg-blue-500 text-white font-bold rounded hover:bg-blue-600 px-4 py-2"
+          >
+            <i class="fas fa-pen"></i>
+          </button>
+          <button
+            (click)="deleteBook(book.id)"
+            class="bg-blue-500 text-white font-bold rounded hover:bg-blue-600 text-center px-4 py-2 m-5"
+          >
+            <i class="fas fa-trash"></i>
+          </button>
+        </td>
       </tr>
       }
     </tbody>
