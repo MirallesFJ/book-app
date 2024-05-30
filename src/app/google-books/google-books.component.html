@@ -34,13 +34,21 @@
             />
           </td>
           <td class="border px-4 py-2 text-black">
-            "{{ book.volumeInfo.title }}"
+            {{ book.volumeInfo.title }}
           </td>
           <td class="border px-4 py-2 text-black">
             {{ book.volumeInfo.authors && book.volumeInfo.authors[0] }}
           </td>
           <td class="border px-4 py-2 text-black">
             {{ book.volumeInfo.pageCount }}
+          </td>
+          <td>
+            <button
+              class="bg-blue-500 text-white font-bold rounded hover:bg-blue-600 text-center px-4 py-2"
+              (click)="addBook(book)"
+            >
+              Add
+            </button>
           </td>
         </tr>
         }

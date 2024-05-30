@@ -5,7 +5,8 @@
     "genre": "Historical Novel",
     "status": "Completed",
     "rating": 5,
-    "isbn": "15637897"
+    "pages": 934,
+    "id": "15637897"
   },
   {
     "title": "The Bitcoin Standard",
@@ -13,7 +14,8 @@
     "genre": "Economics",
     "status": "Completed",
     "rating": 4,
-    "isbn": "36383735"
+    "pages": 567,
+    "id": "36383735"
   },
   {
     "title": "Read Write Own",
@@ -21,6 +23,7 @@
     "genre": "Tech",
     "status": "In Progress",
     "rating": 3,
-    "isbn": "97908754"
+    "pages": 933,
+    "id": "64983053"
   }
 ]
