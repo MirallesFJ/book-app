@@ -1,5 +1,53 @@
-<input type="text" placeholder="Search for books" />
-<button (click)="searchBook()">Search</button>
+<div class="flex flex-col justify-center items-center">
+  <input
+    type="text"
+    class="border border-gray-300 rounded-lg p-2 w-full text-black mt-5"
+    [(ngModel)]="searchTerm"
+    placeholder="Search for a book"
+  />
+  <button
+    class="bg-blue-500 text-white font-bold rounded hover:bg-blue-600 text-center px-4 py-2 mt-5"
+    (click)="searchBook(searchTerm)"
+  >
+    Search
+  </button>
 
-<h2>Response data:</h2>
-<p>{{ data }}</p>
+  @if (data){
+  <div className="bg-gray-50 p-6 rounded-lg shadow-lg mt-10">
+    <table class="table-auto text-black">
+      <thead>
+        <tr>
+          <th class="px-4 py-2">Cover</th>
+          <th class="px-4 py-2">Title</th>
+          <th class="px-4 py-2">Author</th>
+          <th class="px-4 py-2">Pages</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (book of data; track book.id){
+        <tr>
+          <td class="border px-4 py-2 text-black">
+            <img
+              src="{{ book.volumeInfo.imageLinks?.smallThumbnail }}"
+              alt="{book.volumeInfo.title}"
+              class="w-full h-32 object-contain"
+            />
+          </td>
+          <td class="border px-4 py-2 text-black">
+            "{{ book.volumeInfo.title }}"
+          </td>
+          <td class="border px-4 py-2 text-black">
+            {{ book.volumeInfo.authors && book.volumeInfo.authors[0] }}
+          </td>
+          <td class="border px-4 py-2 text-black">
+            {{ book.volumeInfo.pageCount }}
+          </td>
+        </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+  }@else {
+  <p>No books</p>
+  }
+</div>
