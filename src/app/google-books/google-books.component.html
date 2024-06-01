@@ -1,22 +1,28 @@
-<div class="flex flex-col justify-center items-center">
+<div class="flex flex-col justify-center items-start m-5">
   <input
     type="text"
-    class="border border-gray-300 rounded-lg p-2 w-full text-black mt-5"
-    [(ngModel)]="searchTerm"
-    placeholder="Search for a book"
+    class="border border-gray-300 rounded-lg p-2 text-black mt-5"
+    [(ngModel)]="titleSearch"
+    placeholder="Enter Title"
+  />
+  <input
+    type="text"
+    class="border border-gray-300 rounded-lg p-2 text-black mt-5"
+    [(ngModel)]="authorSearch"
+    placeholder="Enter Author"
   />
   <button
     class="bg-blue-500 text-white font-bold rounded hover:bg-blue-600 text-center px-4 py-2 mt-5"
-    (click)="searchBook(searchTerm)"
+    (click)="searchBook(titleSearch, authorSearch)"
   >
     Search
   </button>
 
   @if (data){
-  <div className="bg-gray-50 p-6 rounded-lg shadow-lg mt-10">
-    <table class="table-auto text-black">
+  <div class="bg-gray-50 p-6 rounded-lg shadow-lg mt-10">
+    <table class="w-full border border-gray-300">
       <thead>
-        <tr>
+        <tr class="bg-gray-200">
           <th class="px-4 py-2">Cover</th>
           <th class="px-4 py-2">Title</th>
           <th class="px-4 py-2">Author</th>
@@ -25,27 +31,29 @@
         </tr>
       </thead>
       <tbody>
-        @for (book of data; track book.id){
-        <tr>
-          <td class="border px-4 py-2 text-black">
+        @for (book of data; track book.id; let index = $index){
+        <tr
+          [ngClass]="{
+            'hover:bg-gray-100': true,
+            'bg-white': index % 2 === 0,
+            'bg-gray-50': index % 2 !== 0
+          }"
+        >
+          <td class="px-4 py-2 text-center">
             <img
               src="{{ book.volumeInfo.imageLinks?.smallThumbnail }}"
-              alt="{book.volumeInfo.title}"
+              alt="{{ book.volumeInfo.title }}"
               class="w-full h-32 object-contain"
             />
           </td>
-          <td class="border px-4 py-2 text-black">
-            {{ book.volumeInfo.title }}
-          </td>
-          <td class="border px-4 py-2 text-black">
+          <td class="px-4 py-2 text-center">{{ book.volumeInfo.title }}</td>
+          <td class="px-4 py-2 text-center">
             {{ book.volumeInfo.authors && book.volumeInfo.authors[0] }}
           </td>
-          <td class="border px-4 py-2 text-black">
-            {{ book.volumeInfo.pageCount }}
-          </td>
-          <td>
+          <td class="px-4 py-2 text-center">{{ book.volumeInfo.pageCount }}</td>
+          <td class="px-4 py-2 text-center">
             <button
-              class="bg-blue-500 text-white font-bold rounded hover:bg-blue-600 text-center px-4 py-2"
+              class="bg-blue-500 text-white font-bold rounded hover:bg-blue-600 px-4 py-2"
               (click)="addBook(book)"
             >
               <i class="fas fa-plus"></i>
